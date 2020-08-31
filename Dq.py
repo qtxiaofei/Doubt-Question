@@ -6,8 +6,11 @@ Disctibution:
     
 Input: 
 
-input:  
+Output:  
 
+Case:
+    input:
+    output:
 Doubt: 
 '''
 
@@ -23,6 +26,9 @@ Input: 输入多组数据，每组数据第一行包含一个整数n，接下来
     如果数为-1，则代表该元素不确定，否则该元素为确定值
 input: 输出一行一个数，代表分割后最少的段数，使得每一段都是等差数列 
 
+Case:
+    input: 3<CR> -1 -1 -1<CR> 3<CR> -1 -1 1<CR> 3<CR> 1 -1 2<CR> 7<CR> -1 -1 -1 4 5 1 2<CR>
+    output: 1<CR> 1<CR> 2<CR> 2<CR>
 Doubt: 代码中的step和取余操作这部分不明白，整个程序流程也需要摸清楚 
 '''
 n = int(input())
@@ -83,3 +89,66 @@ def P1():
         n -= 3**i
         i += 1
         print(num[::-1])
+
+
+'''
+Question: 03
+Title: 等差数列 
+Disctibution: 长度为n的数列a，可以对数列中每个元素最多增加或者减少1，也可以不操作。
+    当前任务是需要知道最少改变了多少元素，使数列a是一个等差数列，若无法让a变成等差数列，则输出-1
+    
+Input: 第一行，一个正整数T(1<=T<=50)，代表测试数据组数；
+    对于每组数据，第一行，一个正整数n(1<=n<=20000);第二行n个正整数，a1,a2,...,an(1<=ai<=10^9)
+    数据保证sum(n)<=20000
+
+Output: 输出一行一个整数，代表最少要改变多少个元素，使得数列a为一个等差数列；否则输出-1
+
+Case:
+    input: 1<CR> 4<CR> 1 5 6 7<CR>
+    output: 3
+
+Doubt: 应该把坐标0单独处理，后面的依次处理；这样比最后一个单独处理要快一些；
+    其次，程序也没有考虑到输出-1的情况，主函数的输入程序部分也不完善
+'''
+def calavg(numlist):
+    sum = 0
+    for i in range(len(numlist)-1):
+        sub = numlist[i+1] - numlist[i]
+        sum = sum + sub
+
+    return sum // (len(numlist)-1)
+
+def handle(numlist, num):
+    counter = 0
+    for i in range(len(numlist)-1):
+        if (numlist[i+1] - numlist[i]) != num:
+            if (numlist[i] - num) > numlist[i-1] and i > 0:
+                numlist[i] -= 1
+                counter += 1
+
+            if (numlist[i] + num) < numlist[i+1]:
+                numlist[i] += 1
+                counter += 1
+        else:
+            continue
+    if (numlist[len(numlist)-1] - num) > numlist[len(numlist)-2]:
+        numlist[len(numlist)-1] -= 1
+        counter += 1
+    elif (numlist[len(numlist)-1] - num) < numlist[len(numlist)-2]:
+        numlist[len(numlist)-1] += 1
+        counter += 1
+
+    return counter
+
+# if __name__ == "__main__":
+#     n = int(input())
+#     for i in range(n):
+#         m = int(input())
+#         numlist = []
+#         for j in range(m):
+#             numlist.append()
+
+if __name__ == "__main__":
+    numlist = [1, 5, 6, 7]
+    num = calavg(numlist)
+    print(handle(numlist, num))

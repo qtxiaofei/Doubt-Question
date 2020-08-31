@@ -1,0 +1,139 @@
+{
+    //"python.pythonPath": "E:\\AI\\Python\\python3.7.6\\python.exe",
+    "python.pythonPath": "E:\\AI\\Env\\my_env\\Scripts\\python.exe" ,
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    
+    "vim.easymotion":false,
+    "vim.sneak": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.showcmd":true,
+    "vim.surround":true,
+
+    // autoSwitchInputMethod configure
+     "vim.autoSwitchInputMethod.enable": true,
+     "vim.autoSwitchInputMethod.defaultIM": "1033",
+     "vim.autoSwitchInputMethod.obtainIMCmd": "E:\\AI\\VSCode\\im-select\\im-select.exe",
+     "vim.autoSwitchInputMethod.switchIMCmd": " E:\\AI\\VSCode\\im-select\\im-select.exe {im}",
+    
+    "vim.smartcase":true,
+    "vim.statusBarColorControl":true,
+    "vim.statusBarColors.normal": ["#8FBCBB", "#434C5E"],
+    "vim.statusBarColors.insert": "#BF616A",
+    "vim.statusBarColors.visual": "#B48EAD",
+    "vim.statusBarColors.visualline": "#B48EAD",
+    "vim.statusBarColors.visualblock": "#A3BE8C",
+    "vim.statusBarColors.replace": "#D08770",
+    "vim.statusBarColors.commandlineinprogress": "#007ACC",
+    "vim.statusBarColors.searchinprogressmode": "#007ACC",
+    "vim.statusBarColors.easymotionmode": "#007ACC",
+    "vim.statusBarColors.easymotioninputmode": "#007ACC",
+    "vim.statusBarColors.surroundinputmode": "#007ACC",
+    "vim.insertModeKeyBindings": [
+        {
+        "before": ["Up"],
+        "after": ["<Nop>"]
+        },
+        {
+        "before": ["<Down>"],
+        "after": ["<Nop>"]
+        },
+        {
+        "before": ["Left"],
+        "after": ["<Nop>"]
+        },
+        {
+        "before": ["Right"],
+        "after": ["<Nop>"]
+        },
+        
+    ],
+        
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+        "before": ["g", "d"],
+        "commands": ["editor.action.revealDefinitionAside"]
+        },
+        {
+        "before": ["<C-n>"],
+        "commands": [":nohl"]
+        },
+        {
+        "before": ["Up"],
+        "after": ["<Nop>"]
+        },
+        {
+        "before": ["<Down>"],
+        "after": ["<Nop>"]
+        },
+        {
+        "before": ["Left"],
+        "after": ["<Nop>"]
+        },
+        {
+        "before": ["Right"],
+        "after": ["<Nop>"]
+        },
+        {
+        "before": ["H"],
+        "after": ["^"]
+        },
+        {
+        "before": ["L"],
+        "after": ["$"]
+        },
+        
+        {
+        "before": ["s", "h"],
+        "commands": [":-tabnext"]
+        },
+        
+        {
+        "before": ["s", "l"],
+        "commands": [":-tabnext"]
+        },
+        {
+        "before": ["s", "j"],
+        "commands": [":tabe"]
+        },
+        {
+        "before": ["s", "k"],
+        "commands": [":tabclose"]
+        },
+        
+        {
+        "before": ["<leader>", "h"],
+        "after": ["<C-b>"]
+        },
+        
+        {
+        "before": ["g", "h"],
+        "commands": [":set splitright<CR>"]
+        },
+        {
+        "before": ["g", "l"],
+        "commands": [":set nosplitright<CR>"]
+        },
+
+        {
+        "before": ["<leader>", "l"],
+        "after": ["<C-f>"]
+        },
+        {
+        "before": ["<leader>", "j"],
+        "after": ["<C-d>"]
+        },
+        {
+        "before": ["<leader>", "k"],
+        "after": ["<C-u>"]
+        },
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": true 
+    }
+}
