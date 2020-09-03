@@ -152,3 +152,75 @@ if __name__ == "__main__":
     numlist = [1, 5, 6, 7]
     num = calavg(numlist)
     print(handle(numlist, num))
+
+
+
+'''
+Question: 04
+Title: 询问最短路径
+Disctibution: n个城市，编号为1到n，现在地图上有m条双向路径。询问两个城市，问最短路径是多少？询问次数过多，完成此任务
+    
+Input: 
+    输入第一行三个整数n,m,q, 代表n个城市，m个双向路径，q次询问
+    接下来m行，每一行输入三个数x,y,l, 代表从x到y有一条距离为l的双向路径
+    接下来输入q行，每一行输入两个数a和b，代表询问的两个城市
+Output:  
+    对每组测试程序，输出一个答案代表查询的是最短路径；若不存在输出为-1
+Case:
+    input: 5 3 3<CR> 1 2 1<CR> 2 3 1<CR> 3 5 2<CR> 1 2<CR> 2 4<CR> 1 5<CR>
+    output: 1<CR> -1<CR> 4<CR>
+Doubt: 结果不正确，在startpoint和endpoint，以及a和b这几个参数跟原来的程序不同，需要解决下这里面的问题是什么
+'''
+
+def BuildGraph_Matrix(Graph_Matrix, Path_Cost):
+	for i in range(1,n):
+		for j in range(1,n):
+			if i==j:
+				Graph_Matrix[i][j]=0
+			else:
+				Graph_Matrix[i][j]=INF
+
+	i=0
+	while i<len(Path_Cost):
+		Start_Point=Path_Cost[i][0]-1
+		End_Point=Path_Cost[i][1]-1
+		Graph_Matrix[Start_Point][End_Point]=Path_Cost[i][2]
+		i+=1
+
+
+def Floyd(Graph_Matrix, distance, vertex_total,INF=999): 
+	for i in range(1,vertex_total+1):
+		for j in range(i,vertex_total+1):
+			distance[i][j]=Graph_Matrix[i][j]
+			distance[j][i]=Graph_Matrix[i][j]
+
+	for k in range(1,vertex_total+1):
+		for i in range(1,vertex_total+1):
+			for j in range(1,vertex_total+1):
+				if distance[i][k]+distance[k][j]<distance[i][j]:
+					distance[i][j]=distance[i][k]+distance[k][j]
+
+
+if __name__ == "__main__":
+    res=list(input("1:").split())
+    n,m,q=[int(res[i]) for i in range(len(res))]
+    NUMBER=n-1
+    INF=999
+
+    Graph_Matrix=[[0]*n for row in range(n)]
+    distance=[[0]*n for row in range(n)]
+
+    Path_Cost = []
+    for i in range(m):
+       sublist = list(input("2:").split())
+       sublist = [int(sublist[i]) for i in range(len(sublist))]
+       Path_Cost.append(sublist)
+
+    BuildGraph_Matrix(Graph_Matrix, Path_Cost)
+    Floyd(Graph_Matrix, distance, NUMBER)
+
+    for i in range(q):
+        sublist2 = list(input("3:").split())
+        a, b = [int(sublist2[i]) for i in range(len(sublist2))]
+        print(distance[a-1][b-1])
+        
